@@ -45,6 +45,9 @@ jobs:
       if: ${{ matrix.python-version }} == "3.9"
       run: invoke coverage
 
-    - name: 📤 Upload Coverage to Coveralls
+    - name: 📤 Upload Coverage to Codacy
       if: ${{ matrix.python-version }} == "3.9"
-      uses: coverallsapp/github-action@v2.3.6
+      uses: codacy/codacy-coverage-reporter@v1.3.0
+      with:
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        coverage-reports: coverage.xml
