@@ -1,0 +1,50 @@
+
+# Check GitHub Actions documentation at:
+# https://github.com/marketplace/actions/pypi-publish
+# UPDATEME to suit your project's workflow
+name: 🧪 Test
+
+on: pull_request
+
+jobs:
+  test:
+    name: Repository Checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: 🐍 Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2.2.2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: 💽 Install Invoke
+      run: pip install invoke
+
+    - name: 💽 Install poetry
+      run: invoke poetry-download
+
+    - name: 🫙 Set up cache
+      uses: actions/cache@v2.1.6
+      with:
+        path: .venv
+        key: venv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
+
+    - name: 📥 Install dependencies
+      run: |
+        poetry config virtualenvs.in-project true
+        poetry install
+
+    - name: ☑️ Run tests
+      run: invoke test
+
+    - name: 🕵️ Generate coverage
+      if: ${{ matrix.python-version }} == "3.9"
+      run: invoke coverage
+
+    - name: 📤 Upload Coverage to Coveralls
+      if: ${{ matrix.python-version }} == "3.9"
+      uses: coverallsapp/github-action@v2.3.6

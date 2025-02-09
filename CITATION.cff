@@ -1,0 +1,18 @@
+# CITATION.cff files can be generated and updated with cffinit:
+# https://citation-file-format.github.io/cff-initializer-javascript/#/
+
+cff-version: 1.2.0
+title: Python Project GH Coveralls
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - name: The Galactipy Contributors
+    email: contact@galactipy.com
+repository-code: 'https://github.com/galactipy/python-project-gh-coveralls'
+repository: 'https://github.com/galactipy/python-project-gh-coveralls'
+abstract: >-
+  Awesome `python-project-gh-coveralls` is a Python cli/package created with https://gitlab.com/galactipy/galactipy
+license: MIT
+version: '0.1.0'  # UPDATEME with your latest version

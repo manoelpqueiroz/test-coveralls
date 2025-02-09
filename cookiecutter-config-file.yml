@@ -1,0 +1,22 @@
+# This file contains values from Cookiecutter
+# Made with https://gitlab.com/galactipy/galactipy
+
+default_context:
+  project_name: "Python Project GH Coveralls"
+  repo_name: "python-project-gh-coveralls"
+  package_name: "python_project_gh_coveralls"
+  project_description: "Awesome `python-project-gh-coveralls` is a Python cli/package created with https://gitlab.com/galactipy/galactipy"
+  author: "The Galactipy Contributors"
+  scm_platform: "GitHub"
+  scm_username: "galactipy"
+  email: "contact@galactipy.com"
+  licence: "MIT"
+  minimal_python_version: 3.9
+  use_ruff: True
+  line_length: 88
+  docstring_style: "numpy"
+  docstring_length: 88
+  use_bdd: True
+  coverage_service: "Coveralls"
+  create_cli: True
+  create_docker: True
